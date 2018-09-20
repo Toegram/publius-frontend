@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux'
 // import getNews from '../FetchReq.js'
 import countryConverter from '../countryCodes.js'
+import {selectCountryAction} from '../actions.js'
 
 import {
   ComposableMap,
@@ -19,16 +20,6 @@ const wrapperStyles = {
 const WorldMap = (props) => {
 
   console.log("props is", props)
-
-  // const handleClick = (event) => {
-  //
-  //   let countryID = event.target.id
-  //
-  //   props.dispatch({
-  //     type: 'CHANGE_SELECTED_COUNTRY',
-  //     payload: countryConverter[countryID]
-  //   })
-  // }
 
 
   return (
@@ -91,14 +82,18 @@ function mapStateToProps(state){
 
 function mapDispatchToProps(dispatch){
   return {
+
     selectCountry: (event) => {
       let countryID = event.target.id
-        dispatch({
-        type: 'CHANGE_SELECTED_COUNTRY',
-        payload: countryConverter[countryID]
-      })
+      dispatch(selectCountryAction(countryID))
     }
   }
 }
+
+
+//{
+// type: 'CHANGE_SELECTED_COUNTRY',
+// payload: countryConverter[countryID]
+// }
 
 export default connect(mapStateToProps, mapDispatchToProps)(WorldMap)

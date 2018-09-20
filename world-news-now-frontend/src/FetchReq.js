@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 
 const getNews = (props) => {
   console.log("FETCH PROPS", props);
-  
+
   fetch(`https://newsapi.org/v2/top-headlines?country=${props.selectedCountry}&apiKey=39cf1522998442b68090abeb1716a344`)
   .then( res => res.json() )
   .then( data => props.dispatch({
@@ -16,5 +16,9 @@ function mapStateToProps(state){
     selectedCountry: state.selectedCountry
   }
 }
+// 
+// function mapDispatchToProps(dispatch){
+//
+// }
 
 export default connect(mapStateToProps)(getNews)
