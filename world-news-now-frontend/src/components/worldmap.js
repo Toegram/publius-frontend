@@ -19,9 +19,7 @@ const wrapperStyles = {
 
 const WorldMap = (props) => {
 
-  console.log("props is", props)
-
-
+console.log(props);
   return (
     <div style={wrapperStyles}
          onClick={(event) => props.selectCountry(event)} >

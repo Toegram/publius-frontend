@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import WorldMap from './components/WorldMap.js'
 import HeaderBar from './components/HeaderBar.js'
-
+import GetNews from './FetchReq.js'
+import SearchBar from './components/SearchBar.js'
 
 class App extends Component {
 
@@ -19,7 +20,9 @@ class App extends Component {
         <header className="App-header">
           <HeaderBar />
         </header>
-          <WorldMap />
+        <SearchBar />
+        <WorldMap />
+        <GetNews />
       </div>
     );
   }

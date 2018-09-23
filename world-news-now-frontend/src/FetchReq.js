@@ -1,24 +1,32 @@
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import {getNewsArticles} from "./actions.js"
 
-const getNews = (props) => {
-  console.log("FETCH PROPS", props);
+class GetNews extends Component {
+  componentDidMount() {
+    this.props.getNewsArticles(this.props.selectedCountry.toLowerCase())
+  }
 
-  fetch(`https://newsapi.org/v2/top-headlines?country=${props.selectedCountry}&apiKey=39cf1522998442b68090abeb1716a344`)
-  .then( res => res.json() )
-  .then( data => props.dispatch({
-    type: "GET_NEWS_FOR_COUNTRY",
-    payload: data
-  }) )
+  render() {
+    console.log("this.props are", this.props);
+    console.log("-----");
+    return (
+      <h1>HEY</h1>
+    )
+  }
 }
 
 function mapStateToProps(state){
   return {
-    selectedCountry: state.selectedCountry
+    selectedCountry: state.selectedCountry,
+    newsStories: state.newsStories
   }
 }
-// 
-// function mapDispatchToProps(dispatch){
 //
-// }
+function mapDispatchToProps(dispatch){
+  return {
+    getNewsArticles: (selectedCountry) => dispatch(getNewsArticles(selectedCountry))
+  }
+}
 
-export default connect(mapStateToProps)(getNews)
+export default connect(mapStateToProps, mapDispatchToProps)(GetNews)

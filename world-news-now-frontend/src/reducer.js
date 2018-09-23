@@ -1,5 +1,6 @@
 const initialState = {
   selectedCountry: 'us',
+  newsStories: []
 }
 
 
