@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux'
 import { selectCountry, getNewsArticles } from '../actions.js'
 import NewsModal from './ArticleModal.js'
+import { Button } from 'semantic-ui-react'
+import News from './News.js'
 
 import {
   ComposableMap,
@@ -18,18 +20,16 @@ const wrapperStyles = {
 
 const WorldMap = (props) => {
 
-  console.log("WORLDMAP PROP.SELECTEDCOUNTRY", props);
+  console.log("WORLDMAP PROPS", props);
 
   const selectCountryAndFetchNews = (event) => {
     props.selectCountry(event, props.getNewsArticles)
   }
 
-
-
   return (
+    <div>
     <div style={wrapperStyles}
         onClick={(event) => selectCountryAndFetchNews(event)} >
-      <NewsModal />
       <ComposableMap
         projectionConfig={{
           scale: 205,
@@ -76,6 +76,10 @@ const WorldMap = (props) => {
         </ZoomableGroup>
       </ComposableMap>
     </div>
+    <div>
+      {props.newsStories.articles ? <News /> : null}
+    </div>
+  </div>
   )
 }
 

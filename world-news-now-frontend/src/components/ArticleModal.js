@@ -3,26 +3,36 @@ import React, { Component } from 'react'
 import { Button, Header, Image, Modal } from 'semantic-ui-react'
 
 class NewsModal extends Component {
-  state = { open: false }
+  constructor(props){
+    super(props)
+
+    this.state = {
+      open: false,
+      newsArticles: []
+   }
+
+ }
+
 
   show = dimmer => () => this.setState({ dimmer, open: true })
   close = () => this.setState({ open: false })
 
   render() {
-    const { open, dimmer } = this.state
+    const { open, dimmer } = this.state.open
 
-    console.log("NEWSMODAL PROPS IS THIS:", this.props);
+    console.log("NEWSMODAL STATE IS", this.state.newsArticles);
 
     if (this.props.newsStories.length === 0) {
       return (<h3> No Stories For This Country </h3>)
     } else {
       console.log(this.props.newsStories.articles);
+
     return (
       <div>
         <Button onClick={this.show('blurring')}>Get News</Button>
         <Modal dimmer={dimmer} open={open} onClose={this.close}>
           <Modal.Header>
-            Article.Title
+            ARticle Totle
           </Modal.Header>
           <Modal.Content image>
             <Image wrapped size='medium' src='/images/avatar/large/rachel.png' />
