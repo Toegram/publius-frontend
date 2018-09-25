@@ -14,6 +14,7 @@
     "redux-thunk": "^2.3.0",
     "redux-tooltip": "^0.7.2",
     "semantic-ui": "^2.4.0",
+    "semantic-ui-css": "^2.4.0",
     "semantic-ui-react": "^0.82.5"
   },
   "scripts": {

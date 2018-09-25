@@ -12,10 +12,13 @@ import 'semantic-ui-css/semantic.min.css'
 .App-header {
   background-color: #002868;
   height: 80px;
-  padding: 20px;
+  padding-top: 20px;
   color: white;
 }
 
+.Header-title {
+  padding-top: 15px;
+}
 
 .App-title {
   font-size: 1.5em;

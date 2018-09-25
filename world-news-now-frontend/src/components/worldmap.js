@@ -1,8 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
-// import getNews from '../FetchReq.js'
-import countryConverter from '../countryCodes.js'
-import {selectCountryAction} from '../actions.js'
+import { selectCountry, getNewsArticles } from '../actions.js'
+import NewsModal from './ArticleModal.js'
 
 import {
   ComposableMap,
@@ -19,10 +18,18 @@ const wrapperStyles = {
 
 const WorldMap = (props) => {
 
-console.log(props);
+  console.log("WORLDMAP PROP.SELECTEDCOUNTRY", props);
+
+  const selectCountryAndFetchNews = (event) => {
+    props.selectCountry(event, props.getNewsArticles)
+  }
+
+
+
   return (
     <div style={wrapperStyles}
-         onClick={(event) => props.selectCountry(event)} >
+        onClick={(event) => selectCountryAndFetchNews(event)} >
+      <NewsModal />
       <ComposableMap
         projectionConfig={{
           scale: 205,
@@ -52,14 +59,14 @@ console.log(props);
                   },
                   hover: {
                     fill: "#002868",
-                    stroke: "#607D8B",
-                    strokeWidth: 0.75,
+                    stroke: "blue",
+                    strokeWidth: 0.99,
                     outline: "none",
                   },
                   pressed: {
                     fill: "#BF0A30",
-                    stroke: "#607D8B",
-                    strokeWidth: 0.99,
+                    stroke: "red",
+                    strokeWidth: 1.5,
                     outline: "bold",
                   },
                 }}
@@ -73,25 +80,21 @@ console.log(props);
 }
 
 function mapStateToProps(state){
+  console.log("state is", state)
   return {
-    selectedCountry: state.selectedCountry
+    selectedCountry: state.country.selectedCountry,
+    newsStories: state.news.newsStories
   }
 }
 
 function mapDispatchToProps(dispatch){
   return {
-
-    selectCountry: (event) => {
+    selectCountry: (event, callback) => {
       let countryID = event.target.id
-      dispatch(selectCountryAction(countryID))
-    }
+      return dispatch(selectCountry(countryID, callback))
+    },
+    getNewsArticles: (selectedCountry) => dispatch(getNewsArticles(selectedCountry))
   }
 }
-
-
-//{
-// type: 'CHANGE_SELECTED_COUNTRY',
-// payload: countryConverter[countryID]
-// }
 
 export default connect(mapStateToProps, mapDispatchToProps)(WorldMap)
