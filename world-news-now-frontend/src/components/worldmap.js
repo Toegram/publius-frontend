@@ -1,9 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import { selectCountry, getNewsArticles } from '../actions.js'
-import NewsModal from './ArticleModal.js'
-import { Button } from 'semantic-ui-react'
-import News from './News.js'
+import NewsModal from './NewsModal.js'
+import NewsSideBar from './NewsSidebar.js'
 
 import {
   ComposableMap,
@@ -77,11 +76,13 @@ const WorldMap = (props) => {
       </ComposableMap>
     </div>
     <div>
-      {props.newsStories.articles ? <News /> : null}
+      <NewsSideBar />
     </div>
   </div>
   )
 }
+
+// {props.newsStories.articles && props.newsStories.articles.length > 0 ? <NewsModal /> : null}
 
 function mapStateToProps(state){
   console.log("state is", state)

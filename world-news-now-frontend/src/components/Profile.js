@@ -3,21 +3,30 @@ import { connect } from 'react-redux'
 import { Card } from 'semantic-ui-react'
 import withAuth from '../hocs/withAuth'
 
-const Profile = ({ username, age, country }) => (
+const Profile = (props) => {
 
-  <Card>
+console.log("User profile props:", props)
 
-    <Card.Content>
-      <Card.Header>{username}</Card.Header>
-      <Card.Description>{age} {country}</Card.Description>
-    </Card.Content>
-  </Card>
-)
+  return (
+    <Card>
 
-const mapStateToProps = ({ user: { username, age, country } } ) => ({
-  username,
-  age,
-  country
+      <Card.Content>
+        <Card.Header>Username: {props.userDeets.user ? props.userDeets.user.name : null} </Card.Header>
+        <Card.Description>
+          Age: {props.userDeets.user ? props.userDeets.user.age : null}
+          <br/>
+          Country: {props.userDeets.user ? props.userDeets.user.country : null}
+          <br/>
+
+          Saved News: 
+        </Card.Description>
+      </Card.Content>
+    </Card>
+  )
+}
+
+const mapStateToProps = (state) => ({
+  userDeets: state.user
 })
 
 
