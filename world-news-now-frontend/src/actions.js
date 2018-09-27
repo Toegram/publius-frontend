@@ -88,7 +88,6 @@ export const loginUser = (username, password) => {
         dispatch({ type: 'SET_CURRENT_USER', payload: JSONResponse.user })
       })
       .catch( res => {
-        debugger
         res.json().then(e => dispatch({ type: 'FAILED_LOGIN', payload: e.message }))})
     }
 }
@@ -149,14 +148,14 @@ export const saveArticleToUser = (article, userId) => {
   }
 
   return(dispatch) => {
-  fetch(`${BASE_URL}${URL_SUFFIX}`, objData)
-  .then(response => {
-    debugger;
-    if (response.ok) {
-      return response.json()
-    } else {
-      throw response
-    }
-  })
+    fetch(`${BASE_URL}${URL_SUFFIX}`, objData)
+    .then(response => {
+      if (response.ok) {
+        return response.json()
+      } else { throw response }
+    })
+    .then(
+      dispatch({ type: 'ADD_SAVED_STORY_TO_LIST', payload: article })
+    )
   }
 }

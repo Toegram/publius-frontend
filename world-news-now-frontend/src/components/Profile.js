@@ -43,20 +43,8 @@ console.log("User profile props:", props)
 }
 
 const mapStateToProps = (state) => ({
-  userDeets: state.user,
-  newsDeets: state.news
+  userDeets: state.user
 })
 
 
 export default withAuth(connect(mapStateToProps)(Profile))
-
-
-
-// <Card>
-//   <Card.Content>
-//     <Card.Header>User: {props.userDeets.user ? props.userDeets.user.name + ', ' + props.userDeets.user.age + ', ' + props.userDeets.user.country : null} </Card.Header>
-//     <Card.Description>
-//       Saved News: { props.userDeets.user ? props.userDeets.user.news.map ( news => news.url ) : null }
-//     </Card.Description>
-//   </Card.Content>
-// </Card>

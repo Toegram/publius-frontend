@@ -6,7 +6,8 @@ const initialState = {
   error: null
 }
 
-const usersReducer = (state = initialState, action) => {
+const usersReducer = (state=initialState, action) => {
+
   switch (action.type) {
 
     case 'SET_CURRENT_USER':
@@ -26,8 +27,27 @@ const usersReducer = (state = initialState, action) => {
         authenticatingUser: false
       }
 
-    case 'LOGOUT_USER':
-      return {...state, loggedIn: false}
+  case 'LOGOUT_USER':
+    return {...state, loggedIn: false}
+
+    case 'ADD_SAVED_STORY_TO_LIST':
+      return {
+        ...state,
+        user: {
+          ...state.user.user,
+            news: [...state.user.news, action.payload]
+          }
+        }
+
+
+
+
+
+  // case REMOVE_BOOK:
+  //   return { ...state, user: {...state.user, books: state.user.books.filter(book => book.id !== action.payload)}}
+  //
+  // case SAVE_BOOKSHELF:
+  //   return { ...state, user: {...state.user, bookshelves: state.user.bookshelves.concat(action.payload)}}
 
     default:
       return state

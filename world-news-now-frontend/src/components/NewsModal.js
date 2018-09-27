@@ -15,6 +15,7 @@ class NewsModal extends Component {
   close = () => this.setState({ open: false })
 
   saveNews = (article, userID) => {
+    this.close()
     this.props.saveArticleToUser(article, userID)
   }
 
