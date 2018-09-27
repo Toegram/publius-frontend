@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Header, Image, Modal } from 'semantic-ui-react'
+import { Button, Header, Image, Modal, Input, Icon } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { saveArticleToUser } from '../actions.js'
 
@@ -20,16 +20,18 @@ class NewsModal extends Component {
   }
 
   render() {
-    console.log("NEWSMODAL PROPS", this.props);
     const { open, dimmer } = this.state
-
-
 
  this.props.user.user? console.log("userID in props", this.props.user.user.id) : null
 
     return (
       <div>
-        <Button onClick={this.show('blurring')}>Get News For {this.props.selectedCountry} </Button>
+        <Button animated onClick={this.show('blurring')}>
+          <Button.Content visible>Get News For {this.props.selectedCountry}</Button.Content>
+          <Button.Content hidden>
+            <Icon name='arrow right' />
+          </Button.Content>
+        </Button>
 
         <Modal dimmer={dimmer} open={open} onClose={this.close}>
           <Modal.Header>{this.props.newsStories.articles[0].title} </Modal.Header>
@@ -43,10 +45,10 @@ class NewsModal extends Component {
           </Modal.Content>
           <Modal.Actions>
 
-            { this.props.user.user ? 
+            { this.props.user.user ?
               <Button
               negative
-              icon='heart'
+              icon='heart outline'
               labelPosition='right'
               content="Save"
               onClick={() => this.saveNews(this.props.newsStories.articles[0], this.props.user.user.id)}
@@ -56,7 +58,7 @@ class NewsModal extends Component {
             <a target="_blank" href={this.props.newsStories.articles[0].url}>
             <Button
             positive
-            icon='checkmark'
+            icon='internet explorer'
             labelPosition='right'
             content="Open Article In Browser"
             onClick={this.close} />

@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom'
 import WorldMap from './components/WorldMap.js'
-import Main from './components/Main.js'
 import NewsSideBar from './components/NewsSidebar'
 import LogInForm from './components/LogInForm.js'
 import SignUp from './components/SignUp.js'
