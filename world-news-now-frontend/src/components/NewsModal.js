@@ -42,12 +42,16 @@ class NewsModal extends Component {
             </Modal.Description>
           </Modal.Content>
           <Modal.Actions>
-            <Button
-            negative
-            icon='heart'
-            labelPosition='right'
-            content="Save"
-            onClick={() => this.saveNews(this.props.newsStories.articles[0], this.props.user.user.id)} />
+
+            { this.props.user.user ? 
+              <Button
+              negative
+              icon='heart'
+              labelPosition='right'
+              content="Save"
+              onClick={() => this.saveNews(this.props.newsStories.articles[0], this.props.user.user.id)}
+              />
+            : null }
 
             <a target="_blank" href={this.props.newsStories.articles[0].url}>
             <Button
