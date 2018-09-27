@@ -76,13 +76,12 @@ const WorldMap = (props) => {
       </ComposableMap>
     </div>
     <div>
-      <NewsSideBar />
+      {props.newsStories.articles && props.newsStories.articles.length > 0 ? <NewsModal /> : null}
     </div>
   </div>
   )
 }
 
-// {props.newsStories.articles && props.newsStories.articles.length > 0 ? <NewsModal /> : null}
 
 function mapStateToProps(state){
   console.log("state is", state)

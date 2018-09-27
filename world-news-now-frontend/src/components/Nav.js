@@ -7,10 +7,8 @@ import { logoutUser } from '../actions.js'
 const Nav = ({ user: { loggedIn }, location: { pathname } }) => {
 
   const logOut = () => {
-    console.log("Logged out!");
     logoutUser()
     localStorage.clear()
-
   }
 
   return (
@@ -18,17 +16,17 @@ const Nav = ({ user: { loggedIn }, location: { pathname } }) => {
       {loggedIn ? (
         <Fragment>
           <h2 className="Header-title"> Publius </h2>
-          <Menu.Menu position="left">
-          <Menu.Item as={NavLink} to="/app" name="Home" active={pathname === '/app'} />
-          <Menu.Item as={NavLink} to="/profile" name="User Info" active={pathname === '/profile'} />
-          <Button onClick={() => logOut()}> Logout </Button>
+          <Menu.Menu >
+            <Menu.Item position="left" as={NavLink} to="/app" name="Home" active={pathname === '/app'} />
+            <Menu.Item position="left" as={NavLink} to="/profile" name="User News" active={pathname === '/profile'} />
+            <Menu.Item position="right" as={NavLink} to="/app" name="Logout" onClick={() => logOut()} active={pathname === '/logout'} />
           </Menu.Menu>
         </Fragment>
       ) : (
         <Fragment>
           <h2 className="Header-title"> Publius </h2>
-          <Menu.Item as={NavLink} to="/app" name="Home" active={pathname === '/app'} />
-          <Menu.Item as={NavLink} to="/login" name="Login" active={pathname === '/login'} />
+          <Menu.Item position="left" as={NavLink} to="/app" name="Home" active={pathname === '/app'} />
+          <Menu.Item position="right" as={NavLink} to="/login" name="Login" active={pathname === '/login'} />
           <Menu.Item as={NavLink} to="/signup" name="Sign Up" active={pathname === '/signup'} />
         </Fragment>
       )}

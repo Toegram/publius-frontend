@@ -119,8 +119,8 @@ export const failedLogin = (errorMsg) => ({
   payload: errorMsg
 })
 
-export const logoutUser = () => {
-  type:'LOGOUT_USER'
+export const logoutUser = (dispatch) => {
+  dispatch({type:'LOGOUT_USER'})
 }
 
 export const authenticatingUser = () => ({ type: 'AUTHENTICATING_USER' })
@@ -147,10 +147,11 @@ export const saveArticleToUser = (article, userId) => {
       user_id: userId
     })
   }
+
   return(dispatch) => {
-  dispatch({ type: 'SAVE_NEWS_TO_USER'})
   fetch(`${BASE_URL}${URL_SUFFIX}`, objData)
   .then(response => {
+    debugger;
     if (response.ok) {
       return response.json()
     } else {

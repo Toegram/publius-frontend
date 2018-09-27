@@ -14,13 +14,17 @@ class NewsModal extends Component {
   show = dimmer => () => this.setState({ dimmer, open: true })
   close = () => this.setState({ open: false })
 
-  saveNews = (article) => {
-    this.props.saveArticleToUser(article)
+  saveNews = (article, userID) => {
+    this.props.saveArticleToUser(article, userID)
   }
 
   render() {
     console.log("NEWSMODAL PROPS", this.props);
     const { open, dimmer } = this.state
+
+
+
+ this.props.user.user? console.log("userID in props", this.props.user.user.id) : null
 
     return (
       <div>
@@ -42,7 +46,7 @@ class NewsModal extends Component {
             icon='heart'
             labelPosition='right'
             content="Save"
-            onClick={() => this.saveNews(this.props.newsStories.articles[0])} />
+            onClick={() => this.saveNews(this.props.newsStories.articles[0], this.props.user.user.id)} />
 
             <a target="_blank" href={this.props.newsStories.articles[0].url}>
             <Button
@@ -62,13 +66,14 @@ class NewsModal extends Component {
 function mapStateToProps(state){
   return {
     selectedCountry: state.country.selectedCountry,
-    newsStories: state.news.newsStories
+    newsStories: state.news.newsStories,
+    user: state.user
   }
 }
 
 function mapDispatchToProps(dispatch){
   return{
-    saveArticleToUser: (article) => dispatch(saveArticleToUser(article))
+    saveArticleToUser: (article, userId) => dispatch(saveArticleToUser(article, userId))
   }
 }
 
