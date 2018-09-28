@@ -162,7 +162,7 @@ export const saveArticleToUser = (article, userId) => {
 
 export const removeArticleFromUser = (article, userId) => {
 
-  let URL_SUFFIX = 'news'
+  let URL_SUFFIX = 'deletenews'
 
   let objData = {
     method: "DELETE",
@@ -170,14 +170,16 @@ export const removeArticleFromUser = (article, userId) => {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${localStorage.getItem('jwt')}`
     },
-    body: JSON.stringify({ article_id: article["id"] })
+    body: JSON.stringify({ news_id: article["id"], user_id: userId })
   }
 
 
   return(dispatch) => {
     fetch(`${BASE_URL}${URL_SUFFIX}`, objData)
+    .then( res => res.json() )
+    .then( resp => console.log("resp is", resp ) )
     .then(
-      dispatch({ type: 'DELETE_NEWS_FROM_USER', payload: article })
+      dispatch({ type: 'DELETE_NEWS_FROM_USER', payload: article.id })
     )
   }
 }

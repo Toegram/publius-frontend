@@ -18,10 +18,10 @@ const Nav = (props) => {
     <Menu pointing secondary>
       {loggedIn ? (
         <Fragment>
-          <h2 className="Header-title"> Publius </h2>
+          <h1 className="Header-title"> Publius </h1>
           <Menu.Menu position="left" >
             <Menu.Item as={NavLink} to="/app" name="Home" active={pathname === '/app'} icon="home"/>
-            <Menu.Item as={NavLink} to="/profile" name="User News" active={pathname === '/profile'} />
+            <Menu.Item as={NavLink} to="/profile" name="Saved Articles" active={pathname === '/profile'} />
           </Menu.Menu>
           <Menu.Menu position="right">
             <Menu.Item name={user.user.name + ',' + user.user.age + ',' + user.user.country} />
@@ -32,7 +32,7 @@ const Nav = (props) => {
       ) : (
 
         <Fragment>
-          <h2 className="Header-title"> Publius </h2>
+          <h1 className="Header-title"> Publius </h1>
           <Menu.Item position="left" as={NavLink} to="/app" name="Home" active={pathname === '/app'} icon="home" />
           <Menu.Item position="right" as={NavLink} to="/login" name="Login" active={pathname === '/login'} icon='sign-in' />
           <Menu.Item as={NavLink} to="/signup" name="Sign Up" active={pathname === '/signup'} icon="edit outline" />

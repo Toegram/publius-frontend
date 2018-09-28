@@ -14,7 +14,7 @@ import {
 const wrapperStyles = {
   width: "100%",
   maxWidth: 980,
-  margin: "0 auto",
+  marginLeft: "175px"
 }
 
 const WorldMap = (props) => {
@@ -27,8 +27,14 @@ const WorldMap = (props) => {
 
   return (
     <div>
+
+      <div>
+        {props.newsStories.articles && props.newsStories.articles.length > 0 ? <NewsModal /> : null}
+      </div>
+
     <div style={wrapperStyles}
         onClick={(event) => selectCountryAndFetchNews(event)} >
+
       <ComposableMap
         projectionConfig={{
           scale: 205,
@@ -37,10 +43,11 @@ const WorldMap = (props) => {
         width={980}
         height={551}
         style={{
-          width: "100%",
+          width: "115%",
           height: "auto",
-        }}
-        >
+          marginRight: "5%"
+        }}>
+
         <ZoomableGroup center={[0,20]} disablePanning>
           <Geographies geography="/world-50m.json">
             {(geographies, projection) => geographies.map((geography, i) => geography.id !== "ATA" && (
@@ -58,13 +65,13 @@ const WorldMap = (props) => {
                   },
                   hover: {
                     fill: "#002868",
-                    stroke: "blue",
+                    stroke: "#BF0A30",
                     strokeWidth: 0.99,
                     outline: "none",
                   },
                   pressed: {
                     fill: "#BF0A30",
-                    stroke: "red",
+                    stroke: "#002868",
                     strokeWidth: 1.5,
                     outline: "bold",
                   },
@@ -73,10 +80,8 @@ const WorldMap = (props) => {
             ))}
           </Geographies>
         </ZoomableGroup>
+
       </ComposableMap>
-    </div>
-    <div>
-      {props.newsStories.articles && props.newsStories.articles.length > 0 ? <NewsModal /> : null}
     </div>
   </div>
   )

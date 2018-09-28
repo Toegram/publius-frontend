@@ -39,15 +39,15 @@ const usersReducer = (state=initialState, action) => {
           }
         }
 
-
-
-
-
-  // case REMOVE_BOOK:
-  //   return { ...state, user: {...state.user, books: state.user.books.filter(book => book.id !== action.payload)}}
-  //
-  // case SAVE_BOOKSHELF:
-  //   return { ...state, user: {...state.user, bookshelves: state.user.bookshelves.concat(action.payload)}}
+    case 'DELETE_NEWS_FROM_USER':
+      debugger;
+      return {
+        ...state,
+        user: {
+          ...state.user.user,
+          news: state.user.news.filter( article => article.id !== action.payload ) 
+        }
+      }
 
     default:
       return state
@@ -55,3 +55,9 @@ const usersReducer = (state=initialState, action) => {
 }
 
 export default usersReducer
+
+
+// return { ...state, user: {...state.user, books: state.user.books.filter(book => book.id !== action.payload)}}
+
+// case SAVE_BOOKSHELF:
+//   return { ...state, user: {...state.user, bookshelves: state.user.bookshelves.concat(action.payload)}}

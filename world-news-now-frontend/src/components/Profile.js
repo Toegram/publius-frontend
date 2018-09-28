@@ -7,7 +7,9 @@ import { removeArticleFromUser } from '../actions.js'
 const Profile = (props) => {
 
   const deleteNews = (article) => {
-    console.log("Delete this one:", article);
+    props.removeArticleFromUser(article, props.userDeets.user.id)
+    console.log("Delete this one:", article.id);
+    console.log("User id is", props.userDeets.user.id);
   }
 
   return (
@@ -28,7 +30,7 @@ const Profile = (props) => {
 
             <Card.Content extra>
               <div className='ui two buttons'>
-                <Button basic color='red' onClick={(article) => deleteNews(article.id)}>
+                <Button basic color='red' onClick={ () => deleteNews(article) }>
                   Delete
                 </Button>
                   <a target="_blank" href={article.url}> <Button basic color='green'>

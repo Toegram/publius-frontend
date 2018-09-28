@@ -22,11 +22,10 @@ class NewsModal extends Component {
   render() {
     const { open, dimmer } = this.state
 
- this.props.user.user? console.log("userID in props", this.props.user.user.id) : null
-
     return (
       <div>
-        <Button animated onClick={this.show('blurring')}>
+
+        <Button animated onClick={this.show('blurring')} floated="left">
           <Button.Content visible>Get News For {this.props.selectedCountry}</Button.Content>
           <Button.Content hidden>
             <Icon name='arrow right' />
@@ -40,8 +39,8 @@ class NewsModal extends Component {
             <Modal.Description>
               <Header>{this.props.newsStories.articles[0].description}</Header>
               <p>{this.props.newsStories.articles[0].content}</p>
-
             </Modal.Description>
+
           </Modal.Content>
           <Modal.Actions>
 
@@ -63,6 +62,7 @@ class NewsModal extends Component {
             content="Open Article In Browser"
             onClick={this.close} />
             </a>
+
           </Modal.Actions>
         </Modal>
       </div>
@@ -80,7 +80,7 @@ function mapStateToProps(state){
 
 function mapDispatchToProps(dispatch){
   return{
-    saveArticleToUser: (article, userId) => dispatch(saveArticleToUser(article, userId))
+    saveArticleToUser: (article, userId) => dispatch(saveArticleToUser(article, userId) ),
   }
 }
 
