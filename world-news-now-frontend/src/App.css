@@ -21,15 +21,16 @@ import 'semantic-ui-css/semantic.min.css'
 }
 
 h1 {
-  color: #DCDCDC;
-  text-shadow: 3px 3px 3px #000000;
+  color: black;
+  /* text-shadow: 1px 1px 1px #DCDCDC; */
 }
 
 .Header-title {
+  font-size: 2.4em;
   padding-top: 15px;
   padding-left: 10px;
   padding-right: 15px;
-  font-family: Notable;
+  font-family: 'Gentium Book Basic', serif;
 }
 
 /* font-family: 'Notable'; */
