@@ -8,6 +8,7 @@ import Profile from './components/Profile.js'
 import Nav from './components/Nav.js'
 import NotFound from './components/NotFound.js'
 import './App.css';
+import NewsSidebar from './components/NewsSidebar.js'
 
 //makes a copy of state, moves first element of array to last spot and returns new elem [0]
   // displayStory = () => {
@@ -24,7 +25,7 @@ import './App.css';
         <Switch>
           <Route exact path="/login" component={LogInForm} />
           <Route exact path="/signup" component={SignUp} />
-          <Route exact path="/app" component={WorldMap} />
+          <Route exact path="/app" component={NewsSidebar} />
           <Route exact path="/profile" component={Profile} />
           <Route component={NotFound} />
         </Switch>

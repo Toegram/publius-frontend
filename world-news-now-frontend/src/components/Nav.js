@@ -14,11 +14,13 @@ const Nav = (props) => {
     localStorage.clear()
   }
 
+
+// <Menu pointing secondary> removes "boxes" from Nav. Unsure what I like better
   return (
-    <Menu pointing secondary>
+    <Menu>
       {loggedIn ? (
         <Fragment>
-          <h1 className="Header-title"> Publius </h1>
+          <h1 className="Header-title">P U B L I U S . </h1>
           <Menu.Menu position="left" >
             <Menu.Item as={NavLink} to="/app" name="Home" active={pathname === '/app'} icon="home"/>
             <Menu.Item as={NavLink} to="/profile" name="Saved Articles" active={pathname === '/profile'} />
@@ -32,7 +34,7 @@ const Nav = (props) => {
       ) : (
 
         <Fragment>
-          <h1 className="Header-title"> Publius </h1>
+          <h1 className="Header-title">P U B L I U S . </h1>
           <Menu.Item position="left" as={NavLink} to="/app" name="Home" active={pathname === '/app'} icon="home" />
           <Menu.Item position="right" as={NavLink} to="/login" name="Login" active={pathname === '/login'} icon='sign-in' />
           <Menu.Item as={NavLink} to="/signup" name="Sign Up" active={pathname === '/signup'} icon="edit outline" />

@@ -9,21 +9,24 @@ import {
   ZoomableGroup,
   Geographies,
   Geography,
+  Markers
 } from "react-simple-maps"
 
 const wrapperStyles = {
   width: "100%",
-  maxWidth: 980,
-  marginLeft: "175px"
+  maxWidth: 980
 }
 
 const WorldMap = (props) => {
 
-  console.log("WORLDMAP PROPS", props);
+  console.log("WorldMap Props is This: ", props );
 
   const selectCountryAndFetchNews = (event) => {
     props.selectCountry(event, props.getNewsArticles)
+    props.handleButtonClick()
   }
+
+  // onDoubleClick={props.handleButtonClick}
 
   return (
     <div>
@@ -34,7 +37,6 @@ const WorldMap = (props) => {
 
     <div style={wrapperStyles}
         onClick={(event) => selectCountryAndFetchNews(event)} >
-
       <ComposableMap
         projectionConfig={{
           scale: 205,
@@ -44,8 +46,7 @@ const WorldMap = (props) => {
         height={551}
         style={{
           width: "115%",
-          height: "auto",
-          marginRight: "5%"
+          height: "auto"
         }}>
 
         <ZoomableGroup center={[0,20]} disablePanning>
@@ -58,13 +59,13 @@ const WorldMap = (props) => {
                 projection={projection}
                 style={{
                   default: {
-                    fill: "#ECEFF1",
+                    fill: "#DCDCDC",
                     stroke: "#607D8B",
                     strokeWidth: 0.75,
                     outline: "none",
                   },
                   hover: {
-                    fill: "#002868",
+                    fill: "#808080",
                     stroke: "#BF0A30",
                     strokeWidth: 0.99,
                     outline: "none",
@@ -89,7 +90,6 @@ const WorldMap = (props) => {
 
 
 function mapStateToProps(state){
-  console.log("state is", state)
   return {
     selectedCountry: state.country.selectedCountry,
     newsStories: state.news.newsStories

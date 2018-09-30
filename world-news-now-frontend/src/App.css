@@ -15,16 +15,24 @@ import 'semantic-ui-css/semantic.min.css'
 
 .App-header {
   background-color: #002868;
-  height: 80px;
+  height: 200px;
   padding-top: 20px;
-  color: white;
+  color: blue;
+}
+
+h1 {
+  color: #DCDCDC;
+  text-shadow: 3px 3px 3px #000000;
 }
 
 .Header-title {
   padding-top: 15px;
   padding-left: 10px;
   padding-right: 15px;
+  font-family: Notable;
 }
+
+/* font-family: 'Notable'; */
 
 .App-title {
   font-size: 1.5em;
