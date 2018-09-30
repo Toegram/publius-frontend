@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Button, Image, Menu, Segment, Sidebar } from 'semantic-ui-react'
+import { Menu, Segment, Sidebar, Header } from 'semantic-ui-react'
 import WorldMap from './WorldMap.js'
+import NewsModal from './NewsModal'
+import countryNames from '../countryNames.js'
 
 class NewsSidebar extends Component {
   constructor(props){
@@ -19,8 +21,13 @@ class NewsSidebar extends Component {
 
     const { visible } = this.state
 
+    const countryID = this.props.selectedCountry
+
     console.log("SIDE BAR PROPS", this.props);
 
+    const styles ={
+      color: "white"
+    }
 
     return (
 
@@ -39,12 +46,21 @@ class NewsSidebar extends Component {
             width='wide'
           >
 
+            <h2 style={styles}> {countryNames[countryID]} News </h2>
+            <hr/>
             {this.props.news.newsStories.articles && this.props.news.newsStories.articles.length > 0 ?
               this.props.news.newsStories.articles.map( article => {
 
-              return <Menu.Item key={article.id} onClick={() => console.log("Clicked!", article)}> {article.title} </Menu.Item> })
 
-            : null }
+              return <Menu.Item key={article.title} onClick={ () => <NewsModal /> }> {article.title} </Menu.Item>
+
+              })
+
+            :
+
+            <h3 style={styles}> Nothing to report from {countryNames[countryID]}. Everything is fine. </h3>
+
+            }
 
           </Sidebar>
 
@@ -61,7 +77,8 @@ class NewsSidebar extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    news: state.news
+    news: state.news,
+    selectedCountry: state.country.selectedCountry
   }
 }
 

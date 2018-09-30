@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Header, Image, Modal, Input, Icon } from 'semantic-ui-react'
+import { Button, Header, Image, Modal, Icon } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { saveArticleToUser } from '../actions.js'
 
@@ -22,7 +22,6 @@ class NewsModal extends Component {
     this.props.saveArticleToUser(article, userID)
   }
 
-//NEEDS CONDITIONAL TO STOP INCREMENTING IF COUNTER > ARTICLES.LENGTH
   nextArticle = () => {
     this.setState({counter: this.state.counter + 1})
   }
@@ -34,18 +33,19 @@ class NewsModal extends Component {
   }
 
   render() {
+
     const { open, dimmer } = this.state
+
+    // <Button animated onClick={this.show('blurring')} floated="left">
+    //   <Button.Content visible>Get News For {this.props.selectedCountry}</Button.Content>
+    //   <Button.Content hidden>
+    //     <Icon name='arrow right' />
+    //   </Button.Content>
+    // </Button>
 
     return (
       <div>
 
-
-        <Button animated onClick={this.show('blurring')} floated="left">
-          <Button.Content visible>Get News For {this.props.selectedCountry}</Button.Content>
-          <Button.Content hidden>
-            <Icon name='arrow right' />
-          </Button.Content>
-        </Button>
 
         <Modal dimmer={dimmer} open={open} onClose={this.close}>
           <Modal.Header>{this.props.newsStories.articles[this.state.counter].title} </Modal.Header>

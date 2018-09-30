@@ -22,7 +22,7 @@ import 'semantic-ui-css/semantic.min.css'
 
 h1 {
   color: black;
-  /* text-shadow: 1px 1px 1px #DCDCDC; */
+  text-shadow: 1px 1px 1px #DCDCDC;
 }
 
 .Header-title {

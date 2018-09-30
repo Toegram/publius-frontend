@@ -8,7 +8,6 @@ export function selectCountry(countryID, callback){
 }
 
 export function getNewsArticles(selectedCountry) {
-  console.log("selectedCountry is", selectedCountry);
   return(dispatch) => {
     return fetch(`https://newsapi.org/v2/top-headlines?country=${selectedCountry}&apiKey=39cf1522998442b68090abeb1716a344`)
     .then( res => res.json() )

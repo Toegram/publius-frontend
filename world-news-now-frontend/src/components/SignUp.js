@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router'
 import { createUser } from '../actions.js'
-import { Button, Form, Segment, Message, Select } from 'semantic-ui-react'
+import { Button, Form, Segment, Message} from 'semantic-ui-react'
 // import { countryOptions } from '../common'
 
 class SignUp extends React.Component {

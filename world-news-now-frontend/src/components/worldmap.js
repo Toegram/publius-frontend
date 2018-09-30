@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux'
 import { selectCountry, getNewsArticles } from '../actions.js'
 import NewsModal from './NewsModal.js'
-import NewsSideBar from './NewsSidebar.js'
 
 import {
   ComposableMap,
@@ -26,8 +25,6 @@ const WorldMap = (props) => {
     props.handleButtonClick()
   }
 
-  // onDoubleClick={props.handleButtonClick}
-
   return (
     <div>
 
@@ -35,8 +32,8 @@ const WorldMap = (props) => {
         {props.newsStories.articles && props.newsStories.articles.length > 0 ? <NewsModal /> : null}
       </div>
 
-    <div style={wrapperStyles}
-        onClick={(event) => selectCountryAndFetchNews(event)} >
+    <div style={wrapperStyles} onClick={(event) => selectCountryAndFetchNews(event)} >
+
       <ComposableMap
         projectionConfig={{
           scale: 205,
@@ -65,14 +62,14 @@ const WorldMap = (props) => {
                     outline: "none",
                   },
                   hover: {
-                    fill: "#808080",
-                    stroke: "#BF0A30",
+                    fill: "#909090",
+                    stroke: "#002868",
                     strokeWidth: 0.99,
                     outline: "none",
                   },
                   pressed: {
-                    fill: "#BF0A30",
-                    stroke: "#002868",
+                    fill: "#606060",
+                    stroke: "#BF0A30",
                     strokeWidth: 1.5,
                     outline: "bold",
                   },

@@ -1,14 +1,12 @@
 import React, { Fragment } from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom'
-import WorldMap from './components/WorldMap.js'
-import NewsSideBar from './components/NewsSidebar'
 import LogInForm from './components/LogInForm.js'
 import SignUp from './components/SignUp.js'
 import Profile from './components/Profile.js'
 import Nav from './components/Nav.js'
 import NotFound from './components/NotFound.js'
-import './App.css';
 import NewsSidebar from './components/NewsSidebar.js'
+import './App.css';
 
 //makes a copy of state, moves first element of array to last spot and returns new elem [0]
   // displayStory = () => {
