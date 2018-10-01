@@ -24,14 +24,13 @@ class NewsSidebar extends Component {
 
   handleArticleClick = (event) => {
     this.setState({ clicked: !this.state.clicked })
-    console.log("Sidebar handleArticleClick", event.target.id)
+    this.props.saveIndexCounter(event.target.id)
   }
 
 
 
   render() {
 
-    console.log("SIDE BAR PROPS", this.props);
     //
     // console.log("SIDEBAR.STATE.CLICKED", this.state.clicked);
 
@@ -72,7 +71,7 @@ class NewsSidebar extends Component {
 
                 indexCounter += 1
 
-                return <Menu.Item key={indexCounter} id={indexCounter} onClick={(event) => this.props.saveIndexCounter(event.target.id)}> {article.title} </Menu.Item>
+                return <Menu.Item key={indexCounter} id={indexCounter} onClick={(event) => this.handleArticleClick(event)}> {article.title} </Menu.Item>
 
 
               })

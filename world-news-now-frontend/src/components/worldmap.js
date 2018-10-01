@@ -19,16 +19,10 @@ const wrapperStyles = {
 
 const WorldMap = (props) => {
 
-  console.log("WorldMap Props is This: ", props );
-
   const selectCountryAndFetchNews = (event) => {
     props.selectCountry(event, props.getNewsArticles)
     props.handleButtonClick()
   }
-  //
-  // <div>
-  //   {props.newsStories.articles && props.newsStories.articles.length > 0 ? <NewsModal /> : null}
-  // </div>
 
   return (
     <div>

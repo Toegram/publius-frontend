@@ -9,7 +9,7 @@ class NewsModal extends Component {
 
     this.state = {
       open: true,
-      counter: 0
+      counter: parseInt(this.props.indexCounter)
      }
 
   }
@@ -34,15 +34,9 @@ class NewsModal extends Component {
 
   render() {
 
+    console.log("NewsModal Props is as follows:", this.props);
+
     const { open, dimmer } = this.state
-
-
-    // <Button animated onClick={this.show('blurring')} floated="left">
-    //   <Button.Content visible>Get News For {this.props.selectedCountry}</Button.Content>
-    //   <Button.Content hidden>
-    //     <Icon name='arrow right' />
-    //   </Button.Content>
-    // </Button>
 
     return (
       <div>
