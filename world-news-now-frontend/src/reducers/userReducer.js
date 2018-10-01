@@ -34,17 +34,16 @@ const usersReducer = (state=initialState, action) => {
       return {
         ...state,
         user: {
-          ...state.user.user,
-            news: [...state.user.news, action.payload]
-          }
+          ...state.user,
+          news: [...state.user.news, action.payload]
         }
+      }
 
     case 'DELETE_NEWS_FROM_USER':
-      debugger;
       return {
         ...state,
         user: {
-          ...state.user.user,
+          ...state.user,
           news: state.user.news.filter( article => article.id !== action.payload )
         }
       }
