@@ -2,6 +2,7 @@ import 'semantic-ui-css/semantic.min.css'
 
 .App {
   text-align: left;
+
 }
 
 .test-class {
@@ -20,10 +21,7 @@ import 'semantic-ui-css/semantic.min.css'
   color: blue;
 }
 
-h1 {
-  color: black;
-  text-shadow: 1px 1px 1px #DCDCDC;
-}
+
 
 .Header-title {
   font-size: 2.4em;
@@ -31,6 +29,8 @@ h1 {
   padding-left: 10px;
   padding-right: 15px;
   font-family: 'Gentium Book Basic', serif;
+  color: black;
+  text-shadow: 1px 1px 1px #DCDCDC;
 }
 
 /* font-family: 'Notable'; */

@@ -182,3 +182,7 @@ export const removeArticleFromUser = (article, userId) => {
     )
   }
 }
+
+export const saveIndexCounter = (indexCounter) => {
+  return { type: 'SAVE_INDEX_COUNTER', payload: indexCounter }
+}

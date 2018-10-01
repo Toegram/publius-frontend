@@ -13,7 +13,8 @@ import {
 
 const wrapperStyles = {
   width: "100%",
-  maxWidth: 980
+  maxWidth: 980,
+  marginLeft: "100px"
 }
 
 const WorldMap = (props) => {
@@ -24,13 +25,13 @@ const WorldMap = (props) => {
     props.selectCountry(event, props.getNewsArticles)
     props.handleButtonClick()
   }
+  //
+  // <div>
+  //   {props.newsStories.articles && props.newsStories.articles.length > 0 ? <NewsModal /> : null}
+  // </div>
 
   return (
     <div>
-
-      <div>
-        {props.newsStories.articles && props.newsStories.articles.length > 0 ? <NewsModal /> : null}
-      </div>
 
     <div style={wrapperStyles} onClick={(event) => selectCountryAndFetchNews(event)} >
 
@@ -57,7 +58,7 @@ const WorldMap = (props) => {
                 style={{
                   default: {
                     fill: "#DCDCDC",
-                    stroke: "#607D8B",
+                    stroke: "#404040",
                     strokeWidth: 0.75,
                     outline: "none",
                   },
@@ -68,10 +69,10 @@ const WorldMap = (props) => {
                     outline: "none",
                   },
                   pressed: {
-                    fill: "#606060",
+                    fill: "#909090",
                     stroke: "#BF0A30",
-                    strokeWidth: 1.5,
-                    outline: "bold",
+                    strokeWidth: 0.99,
+                    outline: "none",
                   },
                 }}
                 />

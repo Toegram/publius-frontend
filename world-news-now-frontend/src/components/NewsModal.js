@@ -8,7 +8,7 @@ class NewsModal extends Component {
     super(props)
 
     this.state = {
-      open: false,
+      open: true,
       counter: 0
      }
 
@@ -36,6 +36,7 @@ class NewsModal extends Component {
 
     const { open, dimmer } = this.state
 
+
     // <Button animated onClick={this.show('blurring')} floated="left">
     //   <Button.Content visible>Get News For {this.props.selectedCountry}</Button.Content>
     //   <Button.Content hidden>
@@ -45,7 +46,6 @@ class NewsModal extends Component {
 
     return (
       <div>
-
 
         <Modal dimmer={dimmer} open={open} onClose={this.close}>
           <Modal.Header>{this.props.newsStories.articles[this.state.counter].title} </Modal.Header>
@@ -109,7 +109,8 @@ function mapStateToProps(state){
   return {
     selectedCountry: state.country.selectedCountry,
     newsStories: state.news.newsStories,
-    user: state.user
+    user: state.user,
+    indexCounter: state.news.indexCounter
   }
 }
 

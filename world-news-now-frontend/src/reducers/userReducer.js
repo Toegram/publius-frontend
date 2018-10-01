@@ -45,7 +45,7 @@ const usersReducer = (state=initialState, action) => {
         ...state,
         user: {
           ...state.user.user,
-          news: state.user.news.filter( article => article.id !== action.payload ) 
+          news: state.user.news.filter( article => article.id !== action.payload )
         }
       }
 
