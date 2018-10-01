@@ -31,7 +31,7 @@ class NewsSidebar extends Component {
 
   render() {
 
-    //
+    console.log("Sidepar Props", this.props);
     // console.log("SIDEBAR.STATE.CLICKED", this.state.clicked);
 
     const { visible } = this.state
@@ -43,8 +43,6 @@ class NewsSidebar extends Component {
     const styles ={
       color: "white"
     }
-
-    // onClick={ (event) => this.handleArticleClick(event) }
 
     return (
       <Fragment>
