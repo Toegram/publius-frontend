@@ -34,17 +34,17 @@ class NewsModal extends Component {
       <div>
         <Modal dimmer={this.state.dimmer} open={this.props.isOpen} onClose={this.props.close}>
 
-            <Modal.Header> {this.props.newsStories.articles[this.props.indexCounter].title}
+            <Modal.Header> {this.props.newsStories.articles && this.props.newsStories.articles.length > 0 ? this.props.newsStories.articles[this.props.indexCounter].title : null}
             </Modal.Header>
 
             <Modal.Content image>
-                <Image wrapped size='medium' src={this.props.newsStories.articles[this.props.indexCounter].urlToImage} />
+                <Image wrapped size='medium' src={this.props.newsStories.articles && this.props.newsStories.articles.length > 0 ? this.props.newsStories.articles[this.props.indexCounter].urlToImage : null} />
 
               <Modal.Description>
                 <Header>
-                  {this.props.newsStories.articles[this.props.indexCounter].description}
+                  {this.props.newsStories.articles && this.props.newsStories.articles.length > 0 ? this.props.newsStories.articles[this.props.indexCounter].description : null}
                 </Header>
-                  <p>{this.props.newsStories.articles[this.props.indexCounter].content}</p>
+                  <p>{this.props.newsStories.articles && this.props.newsStories.articles.length > 0 ? this.props.newsStories.articles[this.props.indexCounter].content : null}</p>
               </Modal.Description>
 
             </Modal.Content>
@@ -60,7 +60,7 @@ class NewsModal extends Component {
                 </Button>
               : null }
 
-              {this.props.indexCounter < this.props.newsStories.articles.length -1 ?
+              {this.props.newsStories.articles && this.props.newsStories.articles.length > 0 && this.props.indexCounter < this.props.newsStories.articles.length -1 ?
                 <Button animated onClick={this.nextArticle} floated="left">
                   <Button.Content visible>Next Article</Button.Content>
                   <Button.Content hidden>
@@ -69,7 +69,7 @@ class NewsModal extends Component {
                 </Button>
               : null }
 
-              { this.props.user.user ?
+              { this.props.newsStories.articles && this.props.newsStories.articles.length > 0 && this.props.user.user ?
                 <Button
                   negative
                   icon='heart outline'
@@ -79,7 +79,7 @@ class NewsModal extends Component {
                 />
               : null }
 
-              <a target="_blank" href={this.props.newsStories.articles[this.props.indexCounter].url}>
+              <a target="_blank" href={this.props.newsStories.articles && this.props.newsStories.articles.length > 0 ? this.props.newsStories.articles[this.props.indexCounter].url : null}>
                 <Button
                   positive
                   icon='internet explorer'
