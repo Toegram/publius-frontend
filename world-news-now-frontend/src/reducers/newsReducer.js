@@ -9,7 +9,7 @@ export default function newsReducer( state=initialState, action ){
   switch (action.type) {
 
     case 'SAVE_INDEX_COUNTER':
-      return {...state, indexCounter: action.payload}
+      return {...state, indexCounter: parseInt(action.payload)}
 
     case 'INCREASE_INDEX':
       return {...state, indexCounter: state.indexCounter + 1 }

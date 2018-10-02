@@ -126,7 +126,7 @@ class NewsSidebar extends Component {
             <Segment basic>
               <WorldMap handleButtonClick={this.handleButtonClick}/>
 
-              {this.props.news.newsStories.articles && this.props.news.newsStories.articles.length > 0 ? <NewsModal close={this.close} isOpen={this.state.open}/> : null }
+              {this.props.news.newsStories.articles && this.props.news.newsStories.articles.length > 0 || this.props.news.filteredSearch.articles && this.props.news.filteredSearch.articles.length > 0 ? <NewsModal close={this.close} isOpen={this.state.open}/> : null }
 
             </Segment>
           </Sidebar.Pusher>
