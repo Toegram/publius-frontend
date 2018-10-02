@@ -1,15 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import { selectCountry, getNewsArticles } from '../actions.js'
-import NewsModal from './NewsModal.js'
-
-import {
-  ComposableMap,
-  ZoomableGroup,
-  Geographies,
-  Geography,
-  Markers
-} from "react-simple-maps"
+import { ComposableMap, ZoomableGroup, Geographies, Geography } from "react-simple-maps"
 
 const wrapperStyles = {
   width: "100%",

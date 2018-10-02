@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
-import { Menu, Segment, Sidebar, Header, Button } from 'semantic-ui-react'
+import { Menu, Segment, Sidebar, Button } from 'semantic-ui-react'
 import WorldMap from './WorldMap.js'
 import NewsModal from './NewsModal'
 import countryNames from '../countryNames.js'
@@ -42,20 +42,14 @@ class NewsSidebar extends Component {
 
   render() {
 
-    console.log("Sidebar Props", this.props);
-
     const { visible } = this.state
-
     const countryID = this.props.selectedCountry
-
+    const styles ={ color: "white" }
     let indexCounter = -1
-
-    const styles ={
-      color: "white"
-    }
 
     return (
       <Fragment>
+
         <div className="Sidebar">
 
           <Sidebar.Pushable as={Segment}>
@@ -79,61 +73,76 @@ class NewsSidebar extends Component {
               </Button.Group>
 
               {this.props.news.newsToDisplay === 'country' ?
-              <Fragment>
-              <h2 style={styles}> {countryNames[countryID]} News </h2>
-              <hr/>
 
-            { this.props.news.newsStories.articles && this.props.news.newsStories.articles.length > 0 ?
-              this.props.news.newsStories.articles.map( article => {
+                <Fragment>
+                  <h2 style={styles}> {countryNames[countryID]} News </h2>
+                  <hr/>
 
-                indexCounter += 1
+                  { this.props.news.newsStories.articles && this.props.news.newsStories.articles.length > 0 ?
 
-                return <Menu.Item key={indexCounter} id={indexCounter} onClick={(event) => this.handleArticleClick(event)}> {article.title} </Menu.Item>
+                  this.props.news.newsStories.articles.map( article => {
+
+                    indexCounter += 1
+
+                    return <Menu.Item key={indexCounter} id={indexCounter} onClick={(event) => this.handleArticleClick(event)}> {article.title} </Menu.Item>
 
 
-              })
+                  })
 
-              :
+                :
 
-              <h3 style={styles}> Nothing to report from {countryNames[countryID]}. Everything is fine. </h3>
-            }
-            </Fragment>
+                  <h3 style={styles}> Nothing to report from {countryNames[countryID]}. Everything is fine. </h3>
+
+                }
+              </Fragment>
 
             :
 
-            <Fragment>
-              <h2 style={styles}> Searched News </h2>
-              <hr/>
+              <Fragment>
+                <h2 style={styles}> Searched News </h2>
+                <hr/>
 
-              { this.props.news.filteredSearch.articles && this.props.news.filteredSearch.articles.length > 0 ?
-              this.props.news.filteredSearch.articles.map( article => {
+                { this.props.news.filteredSearch.articles && this.props.news.filteredSearch.articles.length > 0 ?
 
-                indexCounter += 1
+                  this.props.news.filteredSearch.articles.map( article => {
 
-                return <Menu.Item key={indexCounter} id={indexCounter} onClick={(event) => this.handleArticleClick(event)}> {article.title} </Menu.Item>
+                    indexCounter += 1
 
-              })
-              :
-                <h3 style={styles}> No Search Results... Assume everything is fine until further notice. </h3>
+                    return <Menu.Item key={indexCounter} id={indexCounter} onClick={(event) => this.handleArticleClick(event)}> {article.title} </Menu.Item>
+
+                  })
+
+                :
+
+                  <h3 style={styles}> No Search Results... Assume everything is fine until further notice. </h3>
+
+                }
+
+              </Fragment>
+
               }
-            </Fragment>
-
-            }
 
             </Sidebar>
 
-          <Sidebar.Pusher dimmed={visible}>
-            <Segment basic>
-              <WorldMap handleButtonClick={this.handleButtonClick}/>
+            <Sidebar.Pusher dimmed={visible}>
+              <Segment basic>
 
-              {this.props.news.newsStories.articles && this.props.news.newsStories.articles.length > 0 || this.props.news.filteredSearch.articles && this.props.news.filteredSearch.articles.length > 0 ? <NewsModal close={this.close} isOpen={this.state.open}/> : null }
+                <WorldMap handleButtonClick={this.handleButtonClick}/>
 
-            </Segment>
-          </Sidebar.Pusher>
-        </Sidebar.Pushable>
-      </div>
+                {(this.props.news.newsStories.articles && this.props.news.newsStories.articles.length > 0) || (this.props.news.filteredSearch.articles && this.props.news.filteredSearch.articles.length > 0) ?
 
-    </Fragment>
+                   <NewsModal close={this.close} isOpen={this.state.open}/>
+
+                : null }
+
+              </Segment>
+
+            </Sidebar.Pusher>
+          </Sidebar.Pushable>
+
+        </div>
+
+      </Fragment>
     )
   }
 }
