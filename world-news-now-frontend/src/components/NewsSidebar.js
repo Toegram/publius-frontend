@@ -60,7 +60,7 @@ class NewsSidebar extends Component {
               visible={visible}
               width='wide'>
 
-              <h2 style={styles}> {countryNames[countryID]} News </h2>
+              { this.props.news.filteredSearch.articles ? <h2 style={styles}> "SearchTerm" News </h2> : <h2 style={styles}> {countryNames[countryID]} News </h2> }
               <hr/>
 
             {

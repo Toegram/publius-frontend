@@ -11,7 +11,7 @@ class Searchbar extends Component{
     this.state = { searchTerm: '' }
   }
 
-//"Name your functions after funny puns" - every instructor at Flatiron Bootcamp
+//"Always name your functions after funny puns" - every instructor at Flatiron Web Dev Bootcamp
   theTerminator = (event) => {
     this.setState({ searchTerm: event.target.value})
   }
@@ -19,9 +19,9 @@ class Searchbar extends Component{
 
 
   render(){
-    console.log("Searchbar state", this.props);
+    console.log("Searchbar state", this.state);
     return(
-      <Form onSubmit={() => this.props.getNewsArticlesBySearch(this.props.selectedCountry, this.state.searchTerm)} >
+      <Form onSubmit={() => this.props.getNewsArticlesBySearch(this.state.searchTerm)} >
         <Input action={{ icon: 'search' }} placeholder='Search...' onChange={(event) => this.theTerminator(event)} />
       </Form>
     )

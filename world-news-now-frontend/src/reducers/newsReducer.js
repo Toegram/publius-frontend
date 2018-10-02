@@ -1,6 +1,6 @@
 const initialState = {
   indexCounter: 0,
-  filteredSearch: '',
+  filteredSearch: [],
   newsStories: []
 }
 
