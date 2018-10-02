@@ -196,3 +196,15 @@ export const removeArticleFromUser = (article, userId) => {
 export const saveIndexCounter = (indexCounter) => {
   return { type: 'SAVE_INDEX_COUNTER', payload: indexCounter }
 }
+
+export const setNewsToDisplay = (newsCategory) => {
+  return { type: 'NEWS_TO_DISPLAY', payload: newsCategory}
+}
+
+export const increaseIndex = () => {
+  return { type: 'INCREASE_INDEX' }
+}
+
+export const decreaseIndex = () => {
+  return { type: 'DECREASE_INDEX' }
+}

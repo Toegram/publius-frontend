@@ -1,21 +1,19 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { Button, Header, Image, Modal, Icon } from 'semantic-ui-react'
 import { connect } from 'react-redux'
-import { saveArticleToUser } from '../actions.js'
+import { saveArticleToUser, increaseIndex, decreaseIndex } from '../actions.js'
 
 class NewsModal extends Component {
   constructor(props){
     super(props)
 
     this.state = {
-      open: true,
       counter: parseInt(this.props.indexCounter)
      }
 
   }
 
   show = dimmer => () => this.setState({ dimmer, open: true })
-  close = () => this.setState({ open: false })
 
   saveNews = (article, userID) => {
     this.close()
@@ -23,54 +21,76 @@ class NewsModal extends Component {
   }
 
   nextArticle = () => {
-    this.setState({counter: this.state.counter + 1})
+    this.props.increaseIndex
   }
 
   prevArticle = () => {
     if (this.state.counter > 0){
-      this.setState({counter: this.state.counter - 1})
+      this.props.decreaseIndex
     }
   }
 
   render() {
 
-    console.log("NewsModal Props is as follows:", this.props);
+    console.log("modal props", this.props);
 
-    const { open, dimmer } = this.state
+    const { dimmer } = this.state
+    const { isOpen } = this.props
 
     return (
       <div>
 
-        <Modal dimmer={dimmer} open={open} onClose={this.close}>
-          <Modal.Header>{this.props.newsStories.articles[this.state.counter].title} </Modal.Header>
-          <Modal.Content image>
-            <Image wrapped size='medium' src={this.props.newsStories.articles[this.state.counter].urlToImage} />
-            <Modal.Description>
-              <Header>{this.props.newsStories.articles[this.state.counter].description}</Header>
-              <p>{this.props.newsStories.articles[this.state.counter].content}</p>
-            </Modal.Description>
+        <Modal dimmer={dimmer} open={isOpen} onClose={this.props.close}>
 
-          </Modal.Content>
+          {this.props.newsToDisplay === 'country' ?
+            <Fragment>
+              <Modal.Header>{this.props.newsStories.articles[this.props.indexCounter].title} </Modal.Header>
+              <Modal.Content image>
+              <Image wrapped size='medium' src={this.props.newsStories.articles[this.props.indexCounter].urlToImage} />
+              <Modal.Description>
+              <Header>{this.props.newsStories.articles[this.props.indexCounter].description}</Header>
+              <p>{this.props.newsStories.articles[this.props.indexCounter].content}</p>
+              </Modal.Description>
+              </Modal.Content>
+            </Fragment>
+
+          :
+
+            <Fragment>
+              <Modal.Header>{this.props.filteredNews.articles ? this.props.filteredNews.articles[this.props.indexCounter].title : null} </Modal.Header>
+              <Modal.Content image>
+              <Image wrapped size='medium' src={this.props.filteredNews.articles ? this.props.filteredNews.articles[this.props.indexCounter].urlToImage : null} />
+              <Modal.Description>
+              <Header>{this.props.filteredNews.articles ?  this.props.filteredNews.articles[this.props.indexCounter].description : null}
+              </Header>
+              <p>{this.props.filteredNews.articles ? this.props.filteredNews.articles[this.props.indexCounter].content : null}</p>
+              </Modal.Description>
+              </Modal.Content>
+            </Fragment>
+
+          }
+
+
           <Modal.Actions>
 
 
             {this.state.counter > 0 ?
-            <Button animated onClick={this.prevArticle} floated="left">
-              <Button.Content visible>Previous Article</Button.Content>
-              <Button.Content hidden>
+              <Button animated onClick={this.prevArticle} floated="left">
+                <Button.Content visible>Previous Article</Button.Content>
+                <Button.Content hidden>
                 <Icon name='arrow left' />
-              </Button.Content>
-            </Button>
+                </Button.Content>
+              </Button>
             : null }
 
 
             {this.state.counter < this.props.newsStories.articles.length -1 ?
-            <Button animated onClick={this.nextArticle} floated="left">
-              <Button.Content visible>Next Article</Button.Content>
-              <Button.Content hidden>
+              <Button animated onClick={this.nextArticle} floated="left">
+                <Button.Content visible>Next Article</Button.Content>
+                <Button.Content hidden>
                 <Icon name='arrow right' />
-              </Button.Content>
-            </Button>
+                </Button.Content>
+              </Button>
             : null }
 
             { this.props.user.user ?
@@ -104,13 +124,17 @@ function mapStateToProps(state){
     selectedCountry: state.country.selectedCountry,
     newsStories: state.news.newsStories,
     user: state.user,
-    indexCounter: state.news.indexCounter
+    indexCounter: state.news.indexCounter,
+    newsToDisplay: state.news.newsToDisplay,
+    filteredNews: state.news.filteredSearch
   }
 }
 
 function mapDispatchToProps(dispatch){
   return{
     saveArticleToUser: (article, userId) => dispatch(saveArticleToUser(article, userId) ),
+    increaseIndex: () => dispatch(increaseIndex() ),
+    decreaseIndex: () => dispatch(decreaseIndex() )
   }
 }
 

@@ -1,7 +1,8 @@
 const initialState = {
   indexCounter: 0,
   filteredSearch: [],
-  newsStories: []
+  newsStories: [],
+  newsToDisplay: 'country'
 }
 
 export default function newsReducer( state=initialState, action ){
@@ -9,6 +10,15 @@ export default function newsReducer( state=initialState, action ){
 
     case 'SAVE_INDEX_COUNTER':
       return {...state, indexCounter: action.payload}
+
+    case 'INCREASE_INDEX':
+      return {...state, indexCounter: state.indexCounter + 1 }
+
+    case 'DECREASE_INDEX':
+      return {...state, indexCounter: state.indexCounter - 1 }
+
+    case 'NEWS_TO_DISPLAY':
+      return {...state, newsToDisplay: action.payload}
 
     case 'GET_NEWS_FOR_COUNTRY':
       return {...state, newsStories: action.payload}
