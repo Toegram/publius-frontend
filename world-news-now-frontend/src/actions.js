@@ -61,7 +61,6 @@ export const createUser = (username, password, age, country) => {
       dispatch({ type: 'SET_CURRENT_USER', payload: JSONResponse.user })
     })
     .catch( res => {
-      debugger
       res.json().then(e => dispatch({ type: 'FAILED_LOGIN', payload: e.message }))})
   }
 }
@@ -95,6 +94,7 @@ export const loginUser = (username, password) => {
       .then(JSONResponse => {
         localStorage.setItem('jwt', JSONResponse.jwt)
         dispatch({ type: 'SET_CURRENT_USER', payload: JSONResponse.user })
+        debugger;
       })
       .catch( res => {
         res.json().then(e => dispatch({ type: 'FAILED_LOGIN', payload: e.message }))})
@@ -133,7 +133,7 @@ export const logoutUser = (dispatch) => {
 
 export const authenticatingUser = () => ({ type: 'AUTHENTICATING_USER' })
 
-export const saveArticleToUser = (article, userId) => {
+export const saveArticleToUser = (article, userId, countryName) => {
 
   let URL_SUFFIX = 'news'
 
@@ -163,9 +163,10 @@ export const saveArticleToUser = (article, userId) => {
         return response.json()
       } else { throw response }
     })
-    .then(
-      dispatch({ type: 'ADD_SAVED_STORY_TO_LIST', payload: article })
-    )
+    // .then(
+    //   dispatch({ type: 'ADD_SAVED_STORY_TO_LIST', payload: article, countryName: countryName })
+    // )
+    .then(data => dispatch({ type: 'ADD_SAVED_STORY_TO_LIST', payload: data, countryName: countryName }))
   }
 }
 

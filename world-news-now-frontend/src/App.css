@@ -1,10 +1,8 @@
 import 'semantic-ui-css/semantic.min.css'
 
-/* .root {
+body {
   background-color: black;
-} */
-
-
+}
 .App {
   text-align: left;
 }
@@ -25,7 +23,9 @@ import 'semantic-ui-css/semantic.min.css'
   color: blue;
 }
 
-
+.profile-header{
+  margin-left: 10%
+}
 
 .Header-title {
   font-size: 2.4em;
@@ -34,7 +34,8 @@ import 'semantic-ui-css/semantic.min.css'
   padding-right: 15px;
   font-family: 'Gentium Book Basic', serif;
   color: black;
-  text-shadow: 1px 1px 1px #DCDCDC;
+  text-shadow: 1px 1px 1px #707070;
+
 }
 
 /* font-family: 'Notable'; */

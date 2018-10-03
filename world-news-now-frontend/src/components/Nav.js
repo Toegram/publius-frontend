@@ -26,11 +26,9 @@ const Nav = (props) => {
               <Menu.Item as={NavLink} to="/profile" name="Saved Articles" active={pathname === '/profile'} />
             </Menu.Menu>
 
-            <Menu.Menu position="right">
-              <Menu.Item position="right" marginright="100px"><Searchbar /></Menu.Item> 
-              <Menu.Item name={user.user.name + ',' + user.user.age + ',' + user.user.country} />
+              <Menu.Item position="left" ><Searchbar /></Menu.Item>
+              <Menu.Item name={user.user.name + ',' + user.user.age + ',' + user.user.country} className="profile-header" />
               <Menu.Item  as={NavLink} to="/app" name="Logout" onClick={() => logOut()} active={pathname === '/logout'} icon="sign-out" />
-            </Menu.Menu>
 
           </Fragment>
 
@@ -39,7 +37,7 @@ const Nav = (props) => {
           <Fragment>
             <h1 className="Header-title">P U B L I U S . </h1>
               <Menu.Item position="left" as={NavLink} to="/app" name="Home" active={pathname === '/app'} icon="home" />
-              <Menu.Item position="right"><Searchbar /></Menu.Item>
+              <Menu.Item position="left"><Searchbar /></Menu.Item>
               <Menu.Item position="right" as={NavLink} to="/login" name="Login" active={pathname === '/login'} icon='sign-in' />
               <Menu.Item as={NavLink} to="/signup" name="Sign Up" active={pathname === '/signup'} icon="edit outline" />
           </Fragment>

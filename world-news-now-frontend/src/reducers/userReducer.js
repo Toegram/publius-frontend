@@ -54,9 +54,3 @@ const usersReducer = (state=initialState, action) => {
 }
 
 export default usersReducer
-
-
-// return { ...state, user: {...state.user, books: state.user.books.filter(book => book.id !== action.payload)}}
-
-// case SAVE_BOOKSHELF:
-//   return { ...state, user: {...state.user, bookshelves: state.user.bookshelves.concat(action.payload)}}

@@ -13,7 +13,7 @@ class NewsSidebar extends Component {
 
     this.state = {
       visible: false,
-      open: false,
+      open: false
     }
 
   }
@@ -27,6 +27,7 @@ class NewsSidebar extends Component {
 
   handleArticleClick = (event) => {
     this.props.saveIndexCounter(event.target.id)
+    this.open()
   }
 
   tabSetCountry = () => {
@@ -88,7 +89,7 @@ class NewsSidebar extends Component {
 
                 :
 
-                  <h3 style={styles}> Nothing to report from {countryNames[countryID]}. Everything is fine. </h3>
+                  <h3 style={styles}> Nothing to report from {countryNames[countryID]}. Assume everything is fine until further notice. </h3>
 
                 }
               </Fragment>

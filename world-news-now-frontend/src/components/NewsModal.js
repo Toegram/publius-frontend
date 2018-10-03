@@ -2,13 +2,14 @@ import React, { Component } from 'react'
 import { Button, Header, Image, Modal, Icon } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { saveArticleToUser, increaseIndex, decreaseIndex } from '../actions.js'
+import countryNames from '../countryNames.js'
 
 class NewsModal extends Component {
   constructor(props){
     super(props)
 
     this.state = {
-      counter: parseInt(this.props.indexCounter)
+      counter: Number(this.props.indexCounter)
      }
 
   }
@@ -16,7 +17,7 @@ class NewsModal extends Component {
   show = dimmer => () => this.setState({ dimmer, open: true })
 
   saveNews = (article, userID) => {
-    this.props.saveArticleToUser(article, userID)
+    this.props.saveArticleToUser(article, userID, countryNames)
   }
 
   nextArticle = () => {
@@ -90,7 +91,7 @@ class NewsModal extends Component {
                   icon='heart outline'
                   labelPosition='right'
                   content="Save"
-                  onClick={() => this.saveNews(this.props.newsStories.articles[this.props.indexCounter], this.props.user.user.id)}/>
+                  onClick={() => this.saveNews(this.props.newsStories.articles[this.props.indexCounter], this.props.user.user.id, countryNames[this.props.selectCountry]) }/>
 
               : null }
 
@@ -170,7 +171,7 @@ class NewsModal extends Component {
                   icon='heart outline'
                   labelPosition='right'
                   content="Save"
-                  onClick={() => this.saveNews(this.props.filteredNews.articles[this.props.indexCounter], this.props.user.user.id)} />
+                  onClick={() => this.saveNews(this.props.filteredNews.articles[this.props.indexCounter], this.props.user.user.id, countryNames[this.props.selectCountry])} />
 
               : null }
 
@@ -208,7 +209,7 @@ function mapStateToProps(state){
     selectedCountry: state.country.selectedCountry,
     newsStories: state.news.newsStories,
     user: state.user,
-    indexCounter: parseInt(state.news.indexCounter),
+    indexCounter: Number(state.news.indexCounter),
     newsToDisplay: state.news.newsToDisplay,
     filteredNews: state.news.filteredSearch
   }
