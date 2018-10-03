@@ -27,7 +27,6 @@ class NewsSidebar extends Component {
 
   handleArticleClick = (event) => {
     this.props.saveIndexCounter(event.target.id)
-    this.open()
   }
 
   tabSetCountry = () => {
@@ -37,8 +36,6 @@ class NewsSidebar extends Component {
   tabSetSearched = () => {
     this.props.setNewsToDisplay("searched")
   }
-
-
 
   render() {
 
@@ -67,9 +64,9 @@ class NewsSidebar extends Component {
               <br/>
 
               <Button.Group>
-                <Button onClick={this.tabSetCountry}>Headlines</Button>
+                <Button onClick={this.tabSetCountry}> {countryNames[countryID]} Headlines </Button>
                 <Button.Or />
-                <Button onClick={this.tabSetSearched}>Searched</Button>
+                <Button onClick={this.tabSetSearched}> {this.props.news.searchTerm} News</Button>
               </Button.Group>
 
               {this.props.news.newsToDisplay === 'country' ?
@@ -99,7 +96,7 @@ class NewsSidebar extends Component {
             :
 
               <Fragment>
-                <h2 style={styles}> Searched News </h2>
+                <h2 style={styles}> {this.props.news.searchTerm.toUpperCase()} News </h2>
                 <hr/>
 
                 { this.props.news.filteredSearch.articles && this.props.news.filteredSearch.articles.length > 0 ?
@@ -150,7 +147,7 @@ class NewsSidebar extends Component {
 const mapStateToProps = (state) => {
   return {
     news: state.news,
-    selectedCountry: state.country.selectedCountry
+    selectedCountry: state.country.selectedCountry,
   }
 }
 

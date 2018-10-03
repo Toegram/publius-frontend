@@ -1,8 +1,12 @@
 import 'semantic-ui-css/semantic.min.css'
 
+/* .root {
+  background-color: black;
+} */
+
+
 .App {
   text-align: left;
-
 }
 
 .test-class {

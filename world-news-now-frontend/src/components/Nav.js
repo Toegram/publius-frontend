@@ -27,7 +27,7 @@ const Nav = (props) => {
             </Menu.Menu>
 
             <Menu.Menu position="right">
-              <Menu.Item position="right"><Searchbar /></Menu.Item> 
+              <Menu.Item position="right" marginright="100px"><Searchbar /></Menu.Item> 
               <Menu.Item name={user.user.name + ',' + user.user.age + ',' + user.user.country} />
               <Menu.Item  as={NavLink} to="/app" name="Logout" onClick={() => logOut()} active={pathname === '/logout'} icon="sign-out" />
             </Menu.Menu>

@@ -19,10 +19,9 @@ class Searchbar extends Component{
 
 
   render(){
-    console.log("Searchbar state", this.state);
     return(
       <Form onSubmit={() => this.props.getNewsArticlesBySearch(this.state.searchTerm)} >
-        <Input action={{ icon: 'search' }} placeholder='Search...' onChange={(event) => this.theTerminator(event)} />
+        <Input action={{ icon: 'search' }} placeholder='Search The World For...' onChange={(event) => this.theTerminator(event)} />
       </Form>
     )
   }
@@ -37,7 +36,7 @@ function mapStateToProps(state){
 
 function mapDispatchToProps(dispatch){
   return {
-    getNewsArticlesBySearch: (selectedCountry, searchTerm) => dispatch(getNewsArticlesBySearch(selectedCountry, searchTerm))
+    getNewsArticlesBySearch: (searchTerm) => dispatch(getNewsArticlesBySearch(searchTerm))
   }
 }
 

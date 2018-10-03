@@ -49,6 +49,7 @@ const WorldMap = (props) => {
                     outline: "none",
                   },
                   hover: {
+                    transition: "0.75s",
                     fill: "#909090",
                     stroke: "#002868",
                     strokeWidth: 0.99,
@@ -65,7 +66,6 @@ const WorldMap = (props) => {
             ))}
           </Geographies>
         </ZoomableGroup>
-
       </ComposableMap>
     </div>
   </div>

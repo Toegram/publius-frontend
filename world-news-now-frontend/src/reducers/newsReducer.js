@@ -2,7 +2,8 @@ const initialState = {
   indexCounter: 0,
   filteredSearch: [],
   newsStories: [],
-  newsToDisplay: 'country'
+  newsToDisplay: 'country',
+  searchTerm: ''
 }
 
 export default function newsReducer( state=initialState, action ){
@@ -24,7 +25,9 @@ export default function newsReducer( state=initialState, action ){
       return {...state, newsStories: action.payload}
 
     case 'GET_NEWS_BY_SEARCH':
-      return {...state, filteredSearch: action.payload}
+      return {...state,
+        filteredSearch: action.payload,
+        searchTerm: action.searchTerm}
 
     default:
       return state

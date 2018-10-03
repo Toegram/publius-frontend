@@ -22,7 +22,7 @@ export function getNewsArticlesBySearch(searchTerm) {
     return fetch(`https://newsapi.org/v2/everything?q=${searchTerm}&apiKey=39cf1522998442b68090abeb1716a344`)
     .then( res => res.json() )
     .then( data => {
-      return dispatch({ type: 'GET_NEWS_BY_SEARCH', payload: data })
+      return dispatch({ type: 'GET_NEWS_BY_SEARCH', payload: data, searchTerm: searchTerm })
     })
   }
 }
