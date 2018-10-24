@@ -3,6 +3,7 @@ import { Button, Header, Image, Modal, Icon } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { saveArticleToUser, increaseIndex, decreaseIndex } from '../actions.js'
 import countryNames from '../countryNames.js'
+import swal from 'sweetalert'
 
 class NewsModal extends Component {
   constructor(props){
@@ -18,6 +19,7 @@ class NewsModal extends Component {
 
   saveNews = (article, userID) => {
     this.props.saveArticleToUser(article, userID, countryNames)
+    swal("Article Saved!", "Check User Profile To View", "success")
   }
 
   nextArticle = () => {
@@ -91,7 +93,7 @@ class NewsModal extends Component {
                   icon='heart outline'
                   labelPosition='right'
                   content="Save"
-                  onClick={() => this.saveNews(this.props.newsStories.articles[this.props.indexCounter], this.props.user.user.id, countryNames[this.props.selectCountry]) }/>
+                  onClick={() => this.saveNews(this.props.newsStories.articles[this.props.indexCounter], this.props.user.user.id) }/>
 
               : null }
 
@@ -173,7 +175,16 @@ class NewsModal extends Component {
                   content="Save"
                   onClick={() => this.saveNews(this.props.filteredNews.articles[this.props.indexCounter], this.props.user.user.id, countryNames[this.props.selectCountry])} />
 
-              : null }
+              :
+
+                <Button
+                  negative
+                  icon='heart outline'
+                  labelPosition='right'
+                  content="Save"
+                  onClick={() => swal("Please Login To Save", "failure")} />
+
+                }
 
               <a target="_blank" href={this.props.filteredNews.articles[this.props.indexCounter].url}>
 
