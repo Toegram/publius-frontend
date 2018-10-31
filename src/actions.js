@@ -94,7 +94,6 @@ export const loginUser = (username, password) => {
       .then(JSONResponse => {
         localStorage.setItem('jwt', JSONResponse.jwt)
         dispatch({ type: 'SET_CURRENT_USER', payload: JSONResponse.user })
-        debugger;
       })
       .catch( res => {
         res.json().then(e => dispatch({ type: 'FAILED_LOGIN', payload: e.message }))})

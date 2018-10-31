@@ -22,6 +22,10 @@ class NewsModal extends Component {
     swal("Article Saved!", "Check User Profile To View", "success")
   }
 
+  loginNotification = () => {
+    swal("Please Login or SignUp To Save Articles");
+  }
+
   nextArticle = () => {
     this.props.increaseIndex()
   }
@@ -95,7 +99,18 @@ class NewsModal extends Component {
                   content="Save"
                   onClick={() => this.saveNews(this.props.newsStories.articles[this.props.indexCounter], this.props.user.user.id) }/>
 
-              : null }
+              :
+
+                <Button
+                  negative
+                  icon='heart outline'
+                  labelPosition='right'
+                  content="Save"
+                  onClick={() => this.loginNotification()}/>
+
+              }
+
+
 
               <a target="_blank" href={this.props.newsStories.articles && this.props.newsStories.articles.length > 0 ? this.props.newsStories.articles[this.props.indexCounter].url : null}>
 
