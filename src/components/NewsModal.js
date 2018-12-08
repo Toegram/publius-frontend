@@ -182,7 +182,7 @@ class NewsModal extends Component {
               : null }
 
               { this.props.user.user ?
-
+                //Logged in user button
                 <Button
                   negative
                   icon='heart outline'
@@ -191,7 +191,7 @@ class NewsModal extends Component {
                   onClick={() => this.saveNews(this.props.filteredNews.articles[this.props.indexCounter], this.props.user.user.id, countryNames[this.props.selectCountry])} />
 
               :
-
+                //NON-Logged in user Button
                 <Button
                   negative
                   icon='heart outline'
